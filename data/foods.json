@@ -77,6 +77,17 @@
     "categoria": "Pescados"
   },
   {
+    "id": "atun-lata",
+    "nombre": "atun lata",
+    "porcion_g": 100,
+    "kcal": 102,
+    "proteina_g": 24,
+    "carbohidratos_g": 0,
+    "grasa_g": 0.9,
+    "fibra_g": 0,
+    "categoria": "Proteina"
+  },
+  {
     "id": "avena-copos",
     "nombre": "Avena en copos",
     "porcion_g": 100,
