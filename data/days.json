@@ -1,7 +1,7 @@
 {
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 2082,
+    "total_kcal": 2150,
     "entradas": [
       {
         "id": "a5166b8f-6b3",
@@ -122,6 +122,30 @@
         "proteina_g": 9.6,
         "carbohidratos_g": 74.4,
         "grasa_g": 2.7
+      },
+      {
+        "id": "c2005d05-781",
+        "hora": "01:03",
+        "tipo": "comida",
+        "food_id": "leche-desnatada-dia",
+        "nombre": "Leche desnatada DIA Láctea",
+        "cantidad_g": 100,
+        "kcal": 34,
+        "proteina_g": 3.2,
+        "carbohidratos_g": 4.8,
+        "grasa_g": 0.3
+      },
+      {
+        "id": "c2005d05-781",
+        "hora": "01:03",
+        "tipo": "comida",
+        "food_id": "leche-desnatada-dia",
+        "nombre": "Leche desnatada DIA Láctea",
+        "cantidad_g": 100,
+        "kcal": 34,
+        "proteina_g": 3.2,
+        "carbohidratos_g": 4.8,
+        "grasa_g": 0.3
       }
     ]
   }
