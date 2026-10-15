@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#020617">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Evolv</title>
+  <!-- Tailwind CSS (CDN) y Chart.js (CDN, versión fijada) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    html, body { overflow-x: hidden; }
+    body { -webkit-tap-highlight-color: transparent; padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); }
+    input, select { font-size: 16px; } /* evita el zoom automático de iOS */
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+
+  <!-- Cabecera -->
+  <header class="sticky top-0 z-30 bg-slate-950/90 backdrop-blur border-b border-slate-800">
+    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <div class="min-w-0">
+        <h1 class="text-xl font-bold flex items-center gap-2">Evolv
+          <span id="syncDot" class="hidden w-2 h-2 rounded-full bg-sky-400 animate-pulse" title="Sincronizando"></span>
+        </h1>
+        <p id="fechaHoy" class="text-xs text-slate-400 truncate"></p>
+      </div>
+      <div class="flex gap-2">
+        <button id="btnRecargar" class="h-11 w-11 rounded-full bg-slate-800 active:bg-slate-700" aria-label="Recargar">⟳</button>
+        <button id="btnAjustes" class="h-11 w-11 rounded-full bg-slate-800 active:bg-slate-700" aria-label="Ajustes">⚙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-md mx-auto px-4 py-4 space-y-4">
+
+    <!-- ============================ PESTAÑA HOY ============================ -->
+    <section data-tab-panel="hoy" id="tab-hoy" class="space-y-4">
+
+      <!-- Resumen del día -->
+      <div class="rounded-2xl bg-slate-900 p-5 border border-slate-800">
+        <p class="text-sm text-slate-400">Consumido hoy</p>
+        <p class="mt-1"><span id="kcalTotal" class="text-5xl font-bold tabular-nums">0</span>
+          <span class="text-slate-400">/ <span id="kcalObjetivo">2000</span> kcal</span></p>
+        <div class="mt-4 h-3 w-full rounded-full bg-slate-800 overflow-hidden">
+          <div id="barraKcal" class="h-full rounded-full bg-emerald-500" style="width:0%"></div>
+        </div>
+        <div class="mt-3 flex justify-between items-center gap-2">
+          <p id="kcalRestante" class="text-sm font-semibold text-emerald-400"></p>
+          <p id="macros" class="text-xs text-slate-400 text-right"></p>
+        </div>
+      </div>
+
+      <!-- Módulo de picoteo -->
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold mb-3">Picoteo rápido</h2>
+        <div class="grid grid-cols-3 gap-3">
+          <button data-picoteo="verde" class="h-20 rounded-2xl bg-emerald-500 active:bg-emerald-600 text-slate-950 font-bold text-lg">+50</button>
+          <button data-picoteo="amarillo" class="h-20 rounded-2xl bg-amber-400 active:bg-amber-500 text-slate-950 font-bold text-lg">+150</button>
+          <button data-picoteo="rojo" class="h-20 rounded-2xl bg-red-500 active:bg-red-600 text-white font-bold text-lg">+250</button>
+        </div>
+      </div>
+
+      <!-- Añadir comida -->
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold mb-3">Añadir comida</h2>
+        <input id="inpBuscar" type="search" placeholder="Buscar alimento..." autocomplete="off"
+          class="w-full h-12 px-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <div id="resultadosBusqueda" class="mt-3 space-y-2"></div>
+
+        <div id="panelCantidad" class="hidden mt-3 rounded-xl bg-slate-800 p-4">
+          <div class="flex justify-between items-start gap-2">
+            <div class="min-w-0">
+              <p id="selNombre" class="font-semibold truncate"></p>
+              <p id="selInfo" class="text-xs text-slate-400"></p>
+            </div>
+            <button id="btnCancelarSel" class="h-10 px-3 rounded-lg bg-slate-700 text-sm shrink-0">Cambiar</button>
+          </div>
+          <div class="mt-3 flex items-center gap-3">
+            <input id="inpGramos" type="number" inputmode="decimal" min="1" step="any"
+              class="w-28 h-12 px-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-emerald-500 outline-none">
+            <span class="text-slate-400">g</span>
+            <span id="previewKcal" class="ml-auto text-lg font-bold text-emerald-400"></span>
+          </div>
+          <button id="btnAñadirComida" class="mt-4 w-full h-14 rounded-xl bg-emerald-500 active:bg-emerald-600 text-slate-950 font-bold">Añadir</button>
+        </div>
+      </div>
+
+      <!-- Registro del día -->
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold">Registro de hoy</h2>
+        <ul id="listaEntradas" class="divide-y divide-slate-800"></ul>
+      </div>
+    </section>
+
+    <!-- ========================= PESTAÑA ALIMENTOS ========================= -->
+    <section data-tab-panel="alimentos" id="tab-alimentos" class="hidden space-y-4">
+      <form id="formAlimento" class="rounded-2xl bg-slate-900 p-4 border border-slate-800 space-y-3" autocomplete="off">
+        <h2 class="font-semibold">Nuevo alimento</h2>
+        <input name="nombre" required placeholder="Nombre" class="w-full h-12 px-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <div class="grid grid-cols-2 gap-3">
+          <label class="text-xs text-slate-400">Porción (g)
+            <input name="porcion_g" type="number" inputmode="decimal" step="any" required value="100" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Kcal por porción
+            <input name="kcal" type="number" inputmode="decimal" step="any" required class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Proteína (g)
+            <input name="proteina_g" type="number" inputmode="decimal" step="any" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Carbohidratos (g)
+            <input name="carbohidratos_g" type="number" inputmode="decimal" step="any" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Grasa (g)
+            <input name="grasa_g" type="number" inputmode="decimal" step="any" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Fibra (g)
+            <input name="fibra_g" type="number" inputmode="decimal" step="any" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+        </div>
+        <input name="categoria" placeholder="Categoría (ej. Proteínas)" class="w-full h-12 px-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none">
+        <button id="btnGuardarAlimento" type="submit" class="w-full h-14 rounded-xl bg-emerald-500 active:bg-emerald-600 text-slate-950 font-bold">Guardar alimento</button>
+      </form>
+
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold">Catálogo (<span id="numAlimentos">0</span>)</h2>
+        <ul id="listaAlimentos" class="divide-y divide-slate-800"></ul>
+      </div>
+    </section>
+
+    <!-- ========================= PESTAÑA PROGRESO ========================= -->
+    <section data-tab-panel="progreso" id="tab-progreso" class="hidden space-y-4">
+      <form id="formMedidas" class="rounded-2xl bg-slate-900 p-4 border border-slate-800 space-y-3" autocomplete="off">
+        <h2 class="font-semibold">Medidas de hoy</h2>
+        <p class="text-xs text-slate-400">Fórmula de la Marina de EE. UU. (hombre), altura fija <span id="alturaFija">177</span> cm. El % se calcula con el ombligo; la cintura es de seguimiento.</p>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="text-xs text-slate-400">Peso (kg)
+            <input name="peso_kg" type="number" inputmode="decimal" step="any" required class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Cintura (cm)
+            <input name="cintura_cm" type="number" inputmode="decimal" step="any" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Ombligo (cm)
+            <input name="ombligo_cm" type="number" inputmode="decimal" step="any" required class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+          <label class="text-xs text-slate-400">Cuello (cm)
+            <input name="cuello_cm" type="number" inputmode="decimal" step="any" required class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+        </div>
+        <div id="grasaPreview" class="text-center py-2"></div>
+        <button type="submit" class="w-full h-14 rounded-xl bg-emerald-500 active:bg-emerald-600 text-slate-950 font-bold">Guardar registro</button>
+      </form>
+
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold mb-3">Evolución</h2>
+        <div class="relative h-64">
+          <canvas id="graficaProgreso"></canvas>
+          <p id="graficaVacia" class="absolute inset-0 flex items-center justify-center text-slate-500 text-sm">Guarda medidas para ver la gráfica</p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold">Mediciones</h2>
+        <ul id="listaMedidas" class="divide-y divide-slate-800"></ul>
+      </div>
+
+      <div class="rounded-2xl bg-slate-900 p-4 border border-slate-800">
+        <h2 class="font-semibold mb-1">Historial de kcal (14 días)</h2>
+        <ul id="listaHistorial" class="divide-y divide-slate-800 text-sm"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Navegación inferior -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-slate-950/95 backdrop-blur border-t border-slate-800" style="padding-bottom: env(safe-area-inset-bottom)">
+    <div class="max-w-md mx-auto grid grid-cols-3">
+      <button data-tab="hoy" class="h-16 flex flex-col items-center justify-center text-emerald-400"><span class="text-xl">◉</span><span class="text-xs">Hoy</span></button>
+      <button data-tab="alimentos" class="h-16 flex flex-col items-center justify-center text-slate-400"><span class="text-xl">☰</span><span class="text-xs">Alimentos</span></button>
+      <button data-tab="progreso" class="h-16 flex flex-col items-center justify-center text-slate-400"><span class="text-xl">↗</span><span class="text-xs">Progreso</span></button>
+    </div>
+  </nav>
+
+  <!-- Modal de ajustes -->
+  <div id="modalAjustes" class="hidden fixed inset-0 z-40 bg-black/70 flex items-end sm:items-center justify-center">
+    <form id="formAjustes" class="w-full max-w-md bg-slate-900 rounded-t-3xl sm:rounded-3xl p-5 space-y-4 border border-slate-800" autocomplete="off">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold">Ajustes</h2>
+        <button id="btnCerrarAjustes" type="button" class="h-11 w-11 rounded-full bg-slate-800" aria-label="Cerrar">✕</button>
+      </div>
+      <p id="ajustesAviso" class="hidden text-sm bg-amber-500/15 text-amber-300 rounded-xl p-3">Introduce tu token de GitHub para leer y guardar los datos del repositorio.</p>
+      <label class="block text-xs text-slate-400">Token de GitHub (fine-grained, solo repo Evolv, Contents: Read and write)
+        <input id="inpToken" type="password" autocomplete="off" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+      <label class="block text-xs text-slate-400">Objetivo diario (kcal)
+        <input id="inpObjetivo" type="number" inputmode="numeric" min="800" step="10" class="mt-1 w-full h-12 px-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-100 focus:border-emerald-500 outline-none"></label>
+      <p class="text-xs text-slate-500">El token se guarda solo en este dispositivo.</p>
+      <button type="submit" class="w-full h-14 rounded-xl bg-emerald-500 active:bg-emerald-600 text-slate-950 font-bold">Guardar</button>
+    </form>
+  </div>
+
+  <div id="toast" class="hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
