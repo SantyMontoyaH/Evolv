@@ -1,7 +1,7 @@
 {
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 1328,
+    "total_kcal": 2082,
     "entradas": [
       {
         "id": "a5166b8f-6b3",
@@ -98,6 +98,30 @@
         "proteina_g": 0,
         "carbohidratos_g": 0,
         "grasa_g": 0
+      },
+      {
+        "id": "8dbc103c-e9a",
+        "hora": "01:03",
+        "tipo": "comida",
+        "food_id": "choco-shells",
+        "nombre": "choco shells",
+        "cantidad_g": 100,
+        "kcal": 377,
+        "proteina_g": 9.6,
+        "carbohidratos_g": 74.4,
+        "grasa_g": 2.7
+      },
+      {
+        "id": "8dbc103c-e9a",
+        "hora": "01:03",
+        "tipo": "comida",
+        "food_id": "choco-shells",
+        "nombre": "choco shells",
+        "cantidad_g": 100,
+        "kcal": 377,
+        "proteina_g": 9.6,
+        "carbohidratos_g": 74.4,
+        "grasa_g": 2.7
       }
     ]
   }
