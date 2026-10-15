@@ -1,1 +1,32 @@
-{}
+{
+  "2026-10-16": {
+    "objetivo_kcal": 2000,
+    "total_kcal": 730,
+    "entradas": [
+      {
+        "id": "34a18b78-6fb",
+        "hora": "00:57",
+        "tipo": "comida",
+        "food_id": "arroz-blanco-crudo",
+        "nombre": "Arroz blanco crudo",
+        "cantidad_g": 100,
+        "kcal": 365,
+        "proteina_g": 7.1,
+        "carbohidratos_g": 80,
+        "grasa_g": 0.7
+      },
+      {
+        "id": "34a18b78-6fb",
+        "hora": "00:57",
+        "tipo": "comida",
+        "food_id": "arroz-blanco-crudo",
+        "nombre": "Arroz blanco crudo",
+        "cantidad_g": 100,
+        "kcal": 365,
+        "proteina_g": 7.1,
+        "carbohidratos_g": 80,
+        "grasa_g": 0.7
+      }
+    ]
+  }
+}
