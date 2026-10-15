@@ -1,12 +1,96 @@
 [
-  { "id": "avena-copos", "nombre": "Avena en copos", "porcion_g": 100, "kcal": 372, "proteina_g": 13.5, "carbohidratos_g": 58.7, "grasa_g": 7.0, "fibra_g": 10.1, "categoria": "Cereales" },
-  { "id": "arroz-blanco-cocido", "nombre": "Arroz blanco cocido", "porcion_g": 100, "kcal": 130, "proteina_g": 2.7, "carbohidratos_g": 28.2, "grasa_g": 0.3, "fibra_g": 0.4, "categoria": "Cereales" },
-  { "id": "pan-integral", "nombre": "Pan integral", "porcion_g": 100, "kcal": 247, "proteina_g": 13.0, "carbohidratos_g": 41.0, "grasa_g": 3.4, "fibra_g": 7.0, "categoria": "Cereales" },
-  { "id": "pechuga-pollo", "nombre": "Pechuga de pollo a la plancha", "porcion_g": 100, "kcal": 165, "proteina_g": 31.0, "carbohidratos_g": 0, "grasa_g": 3.6, "fibra_g": 0, "categoria": "Proteínas" },
-  { "id": "huevo-entero", "nombre": "Huevo entero (1 ud)", "porcion_g": 50, "kcal": 72, "proteina_g": 6.3, "carbohidratos_g": 0.4, "grasa_g": 4.8, "fibra_g": 0, "categoria": "Proteínas" },
-  { "id": "atun-natural", "nombre": "Atún al natural (escurrido)", "porcion_g": 100, "kcal": 116, "proteina_g": 26.0, "carbohidratos_g": 0, "grasa_g": 1.0, "fibra_g": 0, "categoria": "Proteínas" },
-  { "id": "yogur-griego-0", "nombre": "Yogur griego 0%", "porcion_g": 100, "kcal": 59, "proteina_g": 10.0, "carbohidratos_g": 3.6, "grasa_g": 0.4, "fibra_g": 0, "categoria": "Lácteos" },
-  { "id": "platano", "nombre": "Plátano", "porcion_g": 100, "kcal": 89, "proteina_g": 1.1, "carbohidratos_g": 22.8, "grasa_g": 0.3, "fibra_g": 2.6, "categoria": "Frutas" },
-  { "id": "manzana", "nombre": "Manzana", "porcion_g": 100, "kcal": 52, "proteina_g": 0.3, "carbohidratos_g": 13.8, "grasa_g": 0.2, "fibra_g": 2.4, "categoria": "Frutas" },
-  { "id": "aceite-oliva", "nombre": "Aceite de oliva (1 cda)", "porcion_g": 10, "kcal": 88, "proteina_g": 0, "carbohidratos_g": 0, "grasa_g": 10.0, "fibra_g": 0, "categoria": "Grasas" }
-]
+  {
+    "id": "avena-copos",
+    "nombre": "Avena en copos",
+    "porcion_g": 100,
+    "kcal": 372,
+    "proteina_g": 13.5,
+    "carbohidratos_g": 58.7,
+    "grasa_g": 7,
+    "fibra_g": 10.1,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "arroz-blanco-crudo",
+    "nombre": "Arroz blanco crudo",
+    "porcion_g": 100,
+    "kcal": 365,
+    "proteina_g": 7.1,
+    "carbohidratos_g": 80,
+    "grasa_g": 0.7,
+    "fibra_g": 1.3,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "arroz-blanco-cocido",
+    "nombre": "Arroz blanco cocido",
+    "porcion_g": 100,
+    "kcal": 130,
+    "proteina_g": 2.7,
+    "carbohidratos_g": 28.2,
+    "grasa_g": 0.3,
+    "fibra_g": 0.4,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "arroz-integral-cocido",
+    "nombre": "Arroz integral cocido",
+    "porcion_g": 100,
+    "kcal": 123,
+    "proteina_g": 2.7,
+    "carbohidratos_g": 25.6,
+    "grasa_g": 1,
+    "fibra_g": 1.6,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "pasta-seca",
+    "nombre": "Pasta de trigo seca",
+    "porcion_g": 100,
+    "kcal": 371,
+    "proteina_g": 13,
+    "carbohidratos_g": 74.7,
+    "grasa_g": 1.5,
+    "fibra_g": 3.2,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "pasta-cocida",
+    "nombre": "Pasta de trigo cocida",
+    "porcion_g": 100,
+    "kcal": 158,
+    "proteina_g": 5.8,
+    "carbohidratos_g": 30.9,
+    "grasa_g": 0.9,
+    "fibra_g": 1.8,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "pan-blanco",
+    "nombre": "Pan blanco",
+    "porcion_g": 100,
+    "kcal": 265,
+    "proteina_g": 8.5,
+    "carbohidratos_g": 49,
+    "grasa_g": 3.2,
+    "fibra_g": 2.7,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "pan-integral",
+    "nombre": "Pan integral",
+    "porcion_g": 100,
+    "kcal": 247,
+    "proteina_g": 13,
+    "carbohidratos_g": 41,
+    "grasa_g": 3.4,
+    "fibra_g": 7,
+    "categoria": "Cereales"
+  },
+  {
+    "id": "pan-molde-integral",
+    "nombre": "Pan de molde integral",
+    "porcion_g": 100,
+    "kcal": 250,
+    "proteina_g": 10,
+    "carbohidratos_g": 42,
