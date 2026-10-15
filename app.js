@@ -83,15 +83,37 @@ function redondear(n, dec = 1) {
   return Math.round(n * f) / f;
 }
 
-/** Genera un identificador corto y único para entradas. */
+/** Genera un identificador único para entradas. */
 function nuevoId() {
-  return (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`).slice(0, 12);
+  return crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
 /** Crea un slug a partir de un nombre (id de alimento). */
 function slug(texto) {
-  return texto.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+/** Copia profunda (rompe referencias compartidas entre state y la caché). */
+function clonar(obj) {
+  return structuredClone(obj);
+}
+
+/**
+ * Elimina entradas con id repetido y recalcula el total de cada día.
+ * Sirve para limpiar datos que ya se guardaron duplicados.
+ */
+function limpiarDuplicados(days) {
+  for (const f of Object.keys(days)) {
+    const vistos = new Set();
+    days[f].entradas = (days[f].entradas || []).filter((e) => {
+      if (vistos.has(e.id)) return false;
+      vistos.add(e.id);
+      return true;
+    });
+    days[f].total_kcal = days[f].entradas.reduce((s, e) => s + e.kcal, 0);
+  }
+  return days;
 }
 
 /** Muestra un aviso temporal en la parte inferior. */
@@ -151,12 +173,14 @@ const GH = {
   /**
    * Lee un JSON del repo. Si no existe devuelve `porDefecto` (sha null).
    * Para archivos > 1 MB la API no incluye `content`, así que se pide el blob.
+   * IMPORTANTE: la caché guarda su propia copia y se devuelve otra copia
+   * distinta, para que el estado de la app nunca comparta objetos con la caché.
    */
   async leer(path, porDefecto) {
     const res = await fetch(`${this.url(path)}?ref=${CONFIG.BRANCH}`, { headers: this.headers(), cache: 'no-store' });
     if (res.status === 404) {
-      this.cache[path] = { data: porDefecto, sha: null };
-      return porDefecto;
+      this.cache[path] = { data: clonar(porDefecto), sha: null };
+      return clonar(porDefecto);
     }
     if (res.status === 401 || res.status === 403) throw new Error('Token sin permisos o caducado. Revísalo en Ajustes.');
     if (!res.ok) throw new Error(`GitHub respondió ${res.status} al leer ${path}`);
@@ -169,21 +193,22 @@ const GH = {
       texto = this.decode(blob.content);
     }
     const data = texto.trim() ? JSON.parse(texto) : porDefecto;
-    this.cache[path] = { data, sha: json.sha };
-    return data;
+    this.cache[path] = { data: clonar(data), sha: json.sha };
+    return clonar(data);
   },
 
   /**
    * Modifica un JSON del repo de forma segura:
-   * aplica `mutar(data)` sobre la copia en caché y hace commit.
+   * aplica `mutar(data)` sobre una copia de la caché y hace commit.
    * Si hay conflicto (otro dispositivo escribió antes), relee y reintenta.
    * Las escrituras se encadenan en una cola para no pisarse entre sí.
+   * Devuelve una COPIA del resultado (nunca el objeto de la caché).
    */
   actualizar(path, mutar, mensaje, porDefecto) {
     const tarea = async () => {
       for (let intento = 0; intento < 3; intento++) {
         if (!this.cache[path] || intento > 0) await this.leer(path, porDefecto);
-        const copia = structuredClone(this.cache[path].data);
+        const copia = clonar(this.cache[path].data);
         const nuevo = mutar(copia) ?? copia;
         const body = {
           message: mensaje,
@@ -194,8 +219,8 @@ const GH = {
         const res = await fetch(this.url(path), { method: 'PUT', headers: this.headers(), body: JSON.stringify(body) });
         if (res.ok) {
           const json = await res.json();
-          this.cache[path] = { data: nuevo, sha: json.content.sha };
-          return nuevo;
+          this.cache[path] = { data: clonar(nuevo), sha: json.content.sha };
+          return clonar(nuevo);
         }
         if (res.status === 409 || res.status === 422) continue; // sha desactualizado: reintentar
         if (res.status === 401 || res.status === 403) throw new Error('El token no tiene permiso de escritura (Contents: Read and write).');
@@ -242,9 +267,10 @@ async function cargarTodo() {
       GH.leer(CONFIG.PATHS.measurements, []),
       GH.leer(CONFIG.PATHS.settings, {}),
     ]);
-    state.foods = foods;
-    state.days = days;
-    state.measurements = measurements;
+    // GH.leer ya devuelve copias, pero se clona igualmente por seguridad.
+    state.foods = clonar(foods);
+    state.days = limpiarDuplicados(clonar(days));
+    state.measurements = clonar(measurements);
     state.settings = { objetivo_kcal: CONFIG.OBJETIVO_DEFECTO, altura_cm: CONFIG.ALTURA_CM, ...settings };
   } catch (e) {
     console.error(e);
@@ -272,21 +298,23 @@ function añadirEntrada(entrada) {
   const objetivo = state.settings.objetivo_kcal;
   const completa = { id: nuevoId(), hora: horaActual(), ...entrada, kcal: Math.round(entrada.kcal) };
 
-  // Actualización optimista: se pinta al momento y luego se sincroniza.
-  const dia = structuredClone(diaActual());
+  // Actualización optimista: solo toca `state` (que ya no comparte objetos con la caché).
+  const dia = clonar(diaActual());
   dia.entradas.push(completa);
   dia.total_kcal = dia.entradas.reduce((s, e) => s + e.kcal, 0);
   state.days[fecha] = dia;
   renderHoy();
 
   return guardar(async () => {
-    state.days = await GH.actualizar(CONFIG.PATHS.days, (days) => {
+    const resultado = await GH.actualizar(CONFIG.PATHS.days, (days) => {
       const d = days[fecha] || { objetivo_kcal: objetivo, total_kcal: 0, entradas: [] };
-      d.entradas.push(completa);
+      // Idempotente: si por cualquier motivo la entrada ya está, no se vuelve a añadir.
+      if (!d.entradas.some((e) => e.id === completa.id)) d.entradas.push(completa);
       d.total_kcal = d.entradas.reduce((s, e) => s + e.kcal, 0);
       days[fecha] = d;
       return days;
     }, `data: ${fecha} +${completa.kcal} kcal (${completa.nombre})`, {});
+    state.days = limpiarDuplicados(resultado);
   });
 }
 
@@ -294,13 +322,14 @@ function añadirEntrada(entrada) {
 function borrarEntrada(id) {
   const fecha = state.fecha;
   return guardar(async () => {
-    state.days = await GH.actualizar(CONFIG.PATHS.days, (days) => {
+    const resultado = await GH.actualizar(CONFIG.PATHS.days, (days) => {
       const d = days[fecha];
       if (!d) return days;
       d.entradas = d.entradas.filter((e) => e.id !== id);
       d.total_kcal = d.entradas.reduce((s, e) => s + e.kcal, 0);
       return days;
     }, `data: ${fecha} elimina entrada`, {});
+    state.days = limpiarDuplicados(resultado);
   }, 'Entrada eliminada');
 }
 
