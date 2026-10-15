@@ -84,5 +84,23 @@
         "grasa_g": 14
       }
     ]
+  },
+  "2026-10-16": {
+    "objetivo_kcal": 2000,
+    "total_kcal": 82,
+    "entradas": [
+      {
+        "id": "bb4a71a7-4f6a-4807-bb3c-f689f7d2e275",
+        "hora": "01:44",
+        "tipo": "comida",
+        "food_id": "atun-lata",
+        "nombre": "atun lata",
+        "cantidad_g": 80,
+        "kcal": 82,
+        "proteina_g": 19.2,
+        "carbohidratos_g": 0,
+        "grasa_g": 0.7
+      }
+    ]
   }
 }
