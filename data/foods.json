@@ -902,6 +902,17 @@
     "categoria": "Cereales"
   },
   {
+    "id": "trozo-pizza",
+    "nombre": "trozo pizza",
+    "porcion_g": 100,
+    "kcal": 320,
+    "proteina_g": 0,
+    "carbohidratos_g": 0,
+    "grasa_g": 0,
+    "fibra_g": 0,
+    "categoria": "Otros"
+  },
+  {
     "id": "uva",
     "nombre": "Uvas",
     "porcion_g": 100,
