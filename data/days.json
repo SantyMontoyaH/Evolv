@@ -1,7 +1,7 @@
 {
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 2150,
+    "total_kcal": 1325,
     "entradas": [
       {
         "id": "a5166b8f-6b3",
@@ -74,6 +74,14 @@
         "proteina_g": 3.2,
         "carbohidratos_g": 4.8,
         "grasa_g": 0.3
+      },
+      {
+        "id": "a059ea99-eb2a-463a-9573-a8bd47b9a73d",
+        "hora": "01:11",
+        "tipo": "picoteo",
+        "nivel": "rojo",
+        "nombre": "Picoteo rojo",
+        "kcal": 250
       }
     ]
   }
