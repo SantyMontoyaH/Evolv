@@ -924,6 +924,17 @@
     "categoria": "Frutas"
   },
   {
+    "id": "vaso-proteina-media-racion",
+    "nombre": "vaso proteina media racion",
+    "porcion_g": 100,
+    "kcal": 102,
+    "proteina_g": 15,
+    "carbohidratos_g": 5,
+    "grasa_g": 2,
+    "fibra_g": 0.2,
+    "categoria": "Proteinas"
+  },
+  {
     "id": "vaso-proteina-racion",
     "nombre": "vaso proteina racion",
     "porcion_g": 100,
