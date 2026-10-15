@@ -16,18 +16,6 @@
         "grasa_g": 0.3
       },
       {
-        "id": "a5166b8f-6b3",
-        "hora": "00:59",
-        "tipo": "comida",
-        "food_id": "arroz-blanco-cocido",
-        "nombre": "Arroz blanco cocido",
-        "cantidad_g": 100,
-        "kcal": 130,
-        "proteina_g": 2.7,
-        "carbohidratos_g": 28.2,
-        "grasa_g": 0.3
-      },
-      {
         "id": "8e262b66-71c",
         "hora": "01:00",
         "tipo": "comida",
@@ -38,30 +26,6 @@
         "proteina_g": 31,
         "carbohidratos_g": 0,
         "grasa_g": 3.6
-      },
-      {
-        "id": "8e262b66-71c",
-        "hora": "01:00",
-        "tipo": "comida",
-        "food_id": "pollo-plancha",
-        "nombre": "Pechuga de pollo a la plancha",
-        "cantidad_g": 100,
-        "kcal": 165,
-        "proteina_g": 31,
-        "carbohidratos_g": 0,
-        "grasa_g": 3.6
-      },
-      {
-        "id": "a8d9af34-4f8",
-        "hora": "01:01",
-        "tipo": "comida",
-        "food_id": "huevo-entero",
-        "nombre": "Huevo entero",
-        "cantidad_g": 100,
-        "kcal": 143,
-        "proteina_g": 12.6,
-        "carbohidratos_g": 0.7,
-        "grasa_g": 9.5
       },
       {
         "id": "a8d9af34-4f8",
@@ -88,18 +52,6 @@
         "grasa_g": 0
       },
       {
-        "id": "8ec02c0e-07a",
-        "hora": "01:03",
-        "tipo": "comida",
-        "food_id": "bockwurst",
-        "nombre": "Bockwurst",
-        "cantidad_g": 100,
-        "kcal": 226,
-        "proteina_g": 0,
-        "carbohidratos_g": 0,
-        "grasa_g": 0
-      },
-      {
         "id": "8dbc103c-e9a",
         "hora": "01:03",
         "tipo": "comida",
@@ -110,30 +62,6 @@
         "proteina_g": 9.6,
         "carbohidratos_g": 74.4,
         "grasa_g": 2.7
-      },
-      {
-        "id": "8dbc103c-e9a",
-        "hora": "01:03",
-        "tipo": "comida",
-        "food_id": "choco-shells",
-        "nombre": "choco shells",
-        "cantidad_g": 100,
-        "kcal": 377,
-        "proteina_g": 9.6,
-        "carbohidratos_g": 74.4,
-        "grasa_g": 2.7
-      },
-      {
-        "id": "c2005d05-781",
-        "hora": "01:03",
-        "tipo": "comida",
-        "food_id": "leche-desnatada-dia",
-        "nombre": "Leche desnatada DIA Láctea",
-        "cantidad_g": 100,
-        "kcal": 34,
-        "proteina_g": 3.2,
-        "carbohidratos_g": 4.8,
-        "grasa_g": 0.3
       },
       {
         "id": "c2005d05-781",
