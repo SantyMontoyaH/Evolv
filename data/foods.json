@@ -924,6 +924,17 @@
     "categoria": "Frutas"
   },
   {
+    "id": "vaso-proteina-racion",
+    "nombre": "vaso proteina racion",
+    "porcion_g": 100,
+    "kcal": 205,
+    "proteina_g": 30.5,
+    "carbohidratos_g": 10.9,
+    "grasa_g": 4.3,
+    "fibra_g": 0.5,
+    "categoria": "Protei"
+  },
+  {
     "id": "vinagre",
     "nombre": "Vinagre",
     "porcion_g": 100,
