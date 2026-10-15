@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "fecha": "2026-10-16",
+    "peso_kg": 90,
+    "cintura_cm": 96,
+    "ombligo_cm": 93,
+    "cuello_cm": 40,
+    "altura_cm": 177,
+    "grasa_pct": 21,
+    "metodo": "US_NAVY_HOMBRE"
+  }
+]
