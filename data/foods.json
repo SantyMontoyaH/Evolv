@@ -99,6 +99,17 @@
     "categoria": "Dulces"
   },
   {
+    "id": "bockwurst",
+    "nombre": "Bockwurst",
+    "porcion_g": 100,
+    "kcal": 226,
+    "proteina_g": 0,
+    "carbohidratos_g": 0,
+    "grasa_g": 0,
+    "fibra_g": 0,
+    "categoria": "Proteinas"
+  },
+  {
     "id": "brocoli",
     "nombre": "Brócoli",
     "porcion_g": 100,
