@@ -1,7 +1,7 @@
 {
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 590,
+    "total_kcal": 876,
     "entradas": [
       {
         "id": "a5166b8f-6b3",
@@ -50,6 +50,30 @@
         "proteina_g": 31,
         "carbohidratos_g": 0,
         "grasa_g": 3.6
+      },
+      {
+        "id": "a8d9af34-4f8",
+        "hora": "01:01",
+        "tipo": "comida",
+        "food_id": "huevo-entero",
+        "nombre": "Huevo entero",
+        "cantidad_g": 100,
+        "kcal": 143,
+        "proteina_g": 12.6,
+        "carbohidratos_g": 0.7,
+        "grasa_g": 9.5
+      },
+      {
+        "id": "a8d9af34-4f8",
+        "hora": "01:01",
+        "tipo": "comida",
+        "food_id": "huevo-entero",
+        "nombre": "Huevo entero",
+        "cantidad_g": 100,
+        "kcal": 143,
+        "proteina_g": 12.6,
+        "carbohidratos_g": 0.7,
+        "grasa_g": 9.5
       }
     ]
   }
