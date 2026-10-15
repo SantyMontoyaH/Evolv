@@ -1,7 +1,7 @@
 {
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 1361,
+    "total_kcal": 1279,
     "entradas": [
       {
         "id": "a5166b8f-6b3",
@@ -70,18 +70,6 @@
         "nivel": "rojo",
         "nombre": "Picoteo rojo",
         "kcal": 250
-      },
-      {
-        "id": "63f8f285-474f-4ee6-8fe4-e36a6edd868a",
-        "hora": "01:22",
-        "tipo": "comida",
-        "food_id": "atun-lata",
-        "nombre": "atun lata",
-        "cantidad_g": 80,
-        "kcal": 82,
-        "proteina_g": 19.2,
-        "carbohidratos_g": 0,
-        "grasa_g": 0.7
       },
       {
         "id": "7a50eb44-12ba-4ab8-bbdd-749bba2aa1a3",
