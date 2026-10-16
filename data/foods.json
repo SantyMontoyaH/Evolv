@@ -264,6 +264,17 @@
     "categoria": "Cereales"
   },
   {
+    "id": "empanada-de-pollo-cremosa",
+    "nombre": "Empanada de pollo cremosa",
+    "porcion_g": 100,
+    "kcal": 256,
+    "proteina_g": 8,
+    "carbohidratos_g": 28,
+    "grasa_g": 12,
+    "fibra_g": 1.5,
+    "categoria": "Otros"
+  },
+  {
     "id": "atun-ensalada",
     "nombre": "Ensalada de atún con verduras",
     "porcion_g": 100,
