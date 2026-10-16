@@ -87,7 +87,7 @@
   },
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 1610,
+    "total_kcal": 1790,
     "entradas": [
       {
         "id": "bb4a71a7-4f6a-4807-bb3c-f689f7d2e275",
@@ -160,6 +160,18 @@
         "proteina_g": 30.5,
         "carbohidratos_g": 10.9,
         "grasa_g": 4.3
+      },
+      {
+        "id": "99e4ee55-519a-4a80-9999-df054b899426",
+        "hora": "21:46",
+        "tipo": "comida",
+        "food_id": "bockwurst",
+        "nombre": "Bockwurst",
+        "cantidad_g": 100,
+        "kcal": 180,
+        "proteina_g": 10,
+        "carbohidratos_g": 4,
+        "grasa_g": 14
       }
     ]
   }
