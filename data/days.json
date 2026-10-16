@@ -87,7 +87,7 @@
   },
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 1790,
+    "total_kcal": 1842,
     "entradas": [
       {
         "id": "bb4a71a7-4f6a-4807-bb3c-f689f7d2e275",
@@ -172,6 +172,18 @@
         "proteina_g": 10,
         "carbohidratos_g": 4,
         "grasa_g": 14
+      },
+      {
+        "id": "b13e6cea-7221-41d6-a979-6952cc356d85",
+        "hora": "21:46",
+        "tipo": "comida",
+        "food_id": "clara-huevo",
+        "nombre": "Clara de huevo",
+        "cantidad_g": 100,
+        "kcal": 52,
+        "proteina_g": 10.9,
+        "carbohidratos_g": 0.7,
+        "grasa_g": 0.2
       }
     ]
   }
