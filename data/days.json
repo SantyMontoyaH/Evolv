@@ -87,7 +87,7 @@
   },
   "2026-10-16": {
     "objetivo_kcal": 2000,
-    "total_kcal": 854,
+    "total_kcal": 1225,
     "entradas": [
       {
         "id": "bb4a71a7-4f6a-4807-bb3c-f689f7d2e275",
@@ -124,6 +124,18 @@
         "proteina_g": 0,
         "carbohidratos_g": 0,
         "grasa_g": 0
+      },
+      {
+        "id": "471e51ae-96f3-48a9-bb1b-0fe27291ba25",
+        "hora": "16:28",
+        "tipo": "comida",
+        "food_id": "pasta-seca",
+        "nombre": "Pasta de trigo seca",
+        "cantidad_g": 100,
+        "kcal": 371,
+        "proteina_g": 13,
+        "carbohidratos_g": 74.7,
+        "grasa_g": 1.5
       }
     ]
   }
