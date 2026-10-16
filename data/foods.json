@@ -319,6 +319,17 @@
     "categoria": "Frutas"
   },
   {
+    "id": "galleta-dia-chocolate-1-galleta",
+    "nombre": "Galleta día chocolate 1 galleta",
+    "porcion_g": 100,
+    "kcal": 66,
+    "proteina_g": 0,
+    "carbohidratos_g": 0,
+    "grasa_g": 0,
+    "fibra_g": 0,
+    "categoria": "Galleta"
+  },
+  {
     "id": "garbanzos-cocidos",
     "nombre": "Garbanzos cocidos",
     "porcion_g": 100,
