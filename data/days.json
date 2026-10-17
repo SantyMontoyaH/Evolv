@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 802,
+    "total_kcal": 852,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -246,6 +246,14 @@
         "proteina_g": 31,
         "carbohidratos_g": 0,
         "grasa_g": 3.6
+      },
+      {
+        "id": "9ef2ed5e-19dc-482c-83d8-670772fc3fa4",
+        "hora": "12:56",
+        "tipo": "picoteo",
+        "nivel": "verde",
+        "nombre": "Picoteo verde",
+        "kcal": 50
       }
     ]
   }
