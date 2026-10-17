@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 637,
+    "total_kcal": 802,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -234,6 +234,18 @@
         "nivel": "verde",
         "nombre": "Picoteo verde",
         "kcal": 50
+      },
+      {
+        "id": "a9ef642a-4bf5-4b6e-bc7a-877d93ed4c29",
+        "hora": "12:56",
+        "tipo": "comida",
+        "food_id": "pollo-plancha",
+        "nombre": "Pechuga de pollo a la plancha",
+        "cantidad_g": 100,
+        "kcal": 165,
+        "proteina_g": 31,
+        "carbohidratos_g": 0,
+        "grasa_g": 3.6
       }
     ]
   }
