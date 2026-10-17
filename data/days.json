@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 1093,
+    "total_kcal": 1300,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -266,6 +266,18 @@
         "proteina_g": 8.5,
         "carbohidratos_g": 48.6,
         "grasa_g": 1
+      },
+      {
+        "id": "8585e4fb-5631-47af-bab0-d2ba2b07e224",
+        "hora": "16:28",
+        "tipo": "comida",
+        "food_id": "pringles-40g",
+        "nombre": "Pringles 40g",
+        "cantidad_g": 40,
+        "kcal": 207,
+        "proteina_g": 2.5,
+        "carbohidratos_g": 21,
+        "grasa_g": 12
       }
     ]
   }
