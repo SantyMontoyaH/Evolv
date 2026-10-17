@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 852,
+    "total_kcal": 1093,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -254,6 +254,18 @@
         "nivel": "verde",
         "nombre": "Picoteo verde",
         "kcal": 50
+      },
+      {
+        "id": "e17775a6-aa05-4f95-a15d-e93150fa7df0",
+        "hora": "12:57",
+        "tipo": "comida",
+        "food_id": "pasta-seca",
+        "nombre": "Pasta de trigo seca",
+        "cantidad_g": 65,
+        "kcal": 241,
+        "proteina_g": 8.5,
+        "carbohidratos_g": 48.6,
+        "grasa_g": 1
       }
     ]
   }
