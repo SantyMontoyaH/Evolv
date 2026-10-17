@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 323,
+    "total_kcal": 587,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -214,6 +214,18 @@
         "proteina_g": 10,
         "carbohidratos_g": 4,
         "grasa_g": 14
+      },
+      {
+        "id": "c1d9fa4c-16c6-4247-85b1-3b8d92386569",
+        "hora": "10:28",
+        "tipo": "comida",
+        "food_id": "salami",
+        "nombre": "Salami",
+        "cantidad_g": 60,
+        "kcal": 264,
+        "proteina_g": 10.2,
+        "carbohidratos_g": 1.8,
+        "grasa_g": 24
       }
     ]
   }
