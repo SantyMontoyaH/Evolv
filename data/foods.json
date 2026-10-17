@@ -836,6 +836,17 @@
     "categoria": "Lácteos"
   },
   {
+    "id": "salami",
+    "nombre": "Salami",
+    "porcion_g": 100,
+    "kcal": 440,
+    "proteina_g": 17,
+    "carbohidratos_g": 3,
+    "grasa_g": 40,
+    "fibra_g": 0,
+    "categoria": "Otros"
+  },
+  {
     "id": "salmon",
     "nombre": "Salmón cocinado",
     "porcion_g": 100,
