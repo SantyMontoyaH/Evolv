@@ -770,6 +770,17 @@
     "categoria": "Frutas"
   },
   {
+    "id": "pringles-40g",
+    "nombre": "Pringles 40g",
+    "porcion_g": 40,
+    "kcal": 207,
+    "proteina_g": 2.5,
+    "carbohidratos_g": 21,
+    "grasa_g": 12,
+    "fibra_g": 1.6,
+    "categoria": "Otros"
+  },
+  {
     "id": "queso-cheddar",
     "nombre": "Queso cheddar",
     "porcion_g": 100,
