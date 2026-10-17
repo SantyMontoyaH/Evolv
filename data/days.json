@@ -189,7 +189,7 @@
   },
   "2026-10-17": {
     "objetivo_kcal": 1850,
-    "total_kcal": 1300,
+    "total_kcal": 1505,
     "entradas": [
       {
         "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
@@ -278,6 +278,18 @@
         "proteina_g": 2.5,
         "carbohidratos_g": 21,
         "grasa_g": 12
+      },
+      {
+        "id": "a8016939-5626-41a1-a8c0-b24b9f4013ce",
+        "hora": "23:34",
+        "tipo": "comida",
+        "food_id": "vaso-proteina-racion",
+        "nombre": "vaso proteina racion",
+        "cantidad_g": 100,
+        "kcal": 205,
+        "proteina_g": 30.5,
+        "carbohidratos_g": 10.9,
+        "grasa_g": 4.3
       }
     ]
   }
