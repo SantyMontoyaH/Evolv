@@ -186,5 +186,23 @@
         "grasa_g": 0.2
       }
     ]
+  },
+  "2026-10-17": {
+    "objetivo_kcal": 1850,
+    "total_kcal": 143,
+    "entradas": [
+      {
+        "id": "fda03bd5-c8b7-4035-94a5-154947fe132a",
+        "hora": "10:27",
+        "tipo": "comida",
+        "food_id": "huevo-entero",
+        "nombre": "Huevo entero",
+        "cantidad_g": 100,
+        "kcal": 143,
+        "proteina_g": 12.6,
+        "carbohidratos_g": 0.7,
+        "grasa_g": 9.5
+      }
+    ]
   }
 }
