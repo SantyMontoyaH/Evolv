@@ -329,7 +329,7 @@
   },
   "2026-10-19": {
     "objetivo_kcal": 1850,
-    "total_kcal": 566,
+    "total_kcal": 731,
     "entradas": [
       {
         "id": "66c9f5c8-dd39-4cd1-83e6-2e68a418af58",
@@ -366,6 +366,18 @@
         "proteina_g": 10,
         "carbohidratos_g": 4,
         "grasa_g": 14
+      },
+      {
+        "id": "d8f25454-a47e-449c-9a31-7daeea4ec96a",
+        "hora": "15:06",
+        "tipo": "comida",
+        "food_id": "pollo-plancha",
+        "nombre": "Pechuga de pollo a la plancha",
+        "cantidad_g": 100,
+        "kcal": 165,
+        "proteina_g": 31,
+        "carbohidratos_g": 0,
+        "grasa_g": 3.6
       }
     ]
   }
