@@ -329,7 +329,7 @@
   },
   "2026-10-19": {
     "objetivo_kcal": 1850,
-    "total_kcal": 731,
+    "total_kcal": 861,
     "entradas": [
       {
         "id": "66c9f5c8-dd39-4cd1-83e6-2e68a418af58",
@@ -378,6 +378,18 @@
         "proteina_g": 31,
         "carbohidratos_g": 0,
         "grasa_g": 3.6
+      },
+      {
+        "id": "0b1fe139-7baf-4c14-907c-b72e89ea35d6",
+        "hora": "15:07",
+        "tipo": "comida",
+        "food_id": "arroz-blanco-cocido",
+        "nombre": "Arroz blanco cocido",
+        "cantidad_g": 100,
+        "kcal": 130,
+        "proteina_g": 2.7,
+        "carbohidratos_g": 28.2,
+        "grasa_g": 0.3
       }
     ]
   }
