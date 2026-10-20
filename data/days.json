@@ -395,7 +395,7 @@
   },
   "2026-10-20": {
     "objetivo_kcal": 1850,
-    "total_kcal": 66,
+    "total_kcal": 168,
     "entradas": [
       {
         "id": "2bcadba2-50a4-49f0-a5e1-588b75c218bf",
@@ -408,6 +408,18 @@
         "proteina_g": 0,
         "carbohidratos_g": 0,
         "grasa_g": 0
+      },
+      {
+        "id": "1d1566a0-d585-4d3b-8c23-d78fe5747304",
+        "hora": "10:59",
+        "tipo": "comida",
+        "food_id": "empanada-de-pollo-cremosa",
+        "nombre": "Empanada de pollo cremosa",
+        "cantidad_g": 40,
+        "kcal": 102,
+        "proteina_g": 3.2,
+        "carbohidratos_g": 11.2,
+        "grasa_g": 4.8
       }
     ]
   }
