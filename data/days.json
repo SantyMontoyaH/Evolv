@@ -434,5 +434,23 @@
         "grasa_g": 16
       }
     ]
+  },
+  "2026-10-26": {
+    "objetivo_kcal": 1850,
+    "total_kcal": 264,
+    "entradas": [
+      {
+        "id": "32dcde1d-1349-427f-92a0-48441b6188c0",
+        "hora": "13:15",
+        "tipo": "comida",
+        "food_id": "galleta-dia-chocolate-1-galleta",
+        "nombre": "Galleta día chocolate 1 galleta",
+        "cantidad_g": 400,
+        "kcal": 264,
+        "proteina_g": 0,
+        "carbohidratos_g": 0,
+        "grasa_g": 0
+      }
+    ]
   }
 }
